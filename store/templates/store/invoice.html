@@ -1,0 +1,23 @@
+<h2>Electronic Components Shop</h2>
+<h3>GST Invoice</h3>
+
+Bill No: {{ bill.bill_no }}<br>
+Customer: {{ bill.customer_name }}<br>
+Mobile: {{ bill.mobile }}<br>
+
+<table border="1" width="100%">
+<tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th></tr>
+{% for i in bill.items.all %}
+<tr>
+<td>{{ i.product_name }}</td>
+<td>{{ i.price }}</td>
+<td>{{ i.quantity }}</td>
+<td>{{ i.total }}</td>
+</tr>
+{% endfor %}
+</table>
+
+Subtotal: {{ bill.subtotal }}<br>
+CGST: {{ bill.cgst }}<br>
+SGST: {{ bill.sgst }}<br>
+<b>Grand Total: {{ bill.grand_total }}</b>

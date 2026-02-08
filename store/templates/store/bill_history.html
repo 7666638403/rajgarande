@@ -1,0 +1,27 @@
+<h2>Bill History</h2>
+
+<form method="get">
+<input name="q" placeholder="Search">
+<button type="submit">Search</button>
+</form>
+
+<table border="1">
+<tr>
+<th>Bill No</th><th>Customer</th><th>Total</th><th>Status</th><th>Action</th>
+</tr>
+
+{% for bill in bills %}
+<tr {% if bill.is_cancelled %} style="background:#fdd"{% endif %}>
+<td>{{ bill.bill_no }}</td>
+<td>{{ bill.customer_name }}</td>
+<td>{{ bill.grand_total }}</td>
+<td>{% if bill.is_cancelled %}Cancelled{% else %}Active{% endif %}</td>
+<td>
+<a href="{% url 'bill_pdf' bill.bill_no %}">PDF</a>
+{% if user.is_superuser and not bill.is_cancelled %}
+| <a href="{% url 'cancel_bill' bill.bill_no %}">Cancel</a>
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>

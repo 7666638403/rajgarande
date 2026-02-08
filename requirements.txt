@@ -1,0 +1,6 @@
+django==5.0.3
+xhtml2pdf
+django==5.0.3
+xhtml2pdf
+psycopg2-binary
+dj-database-url

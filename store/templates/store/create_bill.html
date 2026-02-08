@@ -1,0 +1,15 @@
+<h2>Create Bill</h2>
+<form method="post">
+{% csrf_token %}
+Customer: <input name="customer" required><br>
+Mobile: <input name="mobile" required><br><br>
+
+{% for p in products %}
+{{ p.name }} (₹{{ p.price }})
+<input type="number" name="qty_{{ p.id }}" min="0"><br>
+{% endfor %}
+
+<br>
+<button type="submit">Generate Bill</button>
+</form>
+<a href="{% url 'bill_history' %}">Bill History</a>
