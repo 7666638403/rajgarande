@@ -55,6 +55,10 @@ DATABASES = {
         default=os.getenv("DATABASE_URL")
     )
 }
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.onrender.com",
+]
+ALLOWED_HOSTS = ["*"]
 
 
 
